@@ -19,7 +19,7 @@ class CreateCampaignsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('amount');
             $table->integer('owner_id');
-            $table->integer('project_image')->nullable();
+            // $table->integer('project_image')->nullable();
             $table->integer('days');
             $table->string('percentage')->default(0.01);
             $table->integer('completed')->default(0);

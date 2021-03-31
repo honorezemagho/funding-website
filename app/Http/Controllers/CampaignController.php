@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Campaign;
 
 use Illuminate\Http\Request;
 
@@ -14,6 +15,8 @@ class CampaignController extends Controller
     public function index()
     {
         //
+        $campaigns = Campaign::where('owner_id', auth()->user()->id)->get();
+        return view("dashboard.campaings.index", compact("campaigns"));
     }
 
     /**
@@ -24,6 +27,7 @@ class CampaignController extends Controller
     public function create()
     {
         //
+          return view("dashboard.campaings.create");
     }
 
     /**
@@ -35,7 +39,18 @@ class CampaignController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->validate([
+          "name" => "required",
+          "description" => "required",
+          "amount" => "required",
+          "days" => "required",
+          "owner_id" => "required"
+        ]);
+
+        Campaign::create($data);
+        return redirect(route('campaigns.index'));
     }
+
 
     /**
      * Display the specified resource.

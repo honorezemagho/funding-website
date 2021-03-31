@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CampaignController;
+use App\Http\Controllers\PublicController;
+use App\Http\Controllers\DonationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +16,21 @@ use App\Http\Controllers\CampaignController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [PublicController::class,'campaigns']);
+
+Route::get('/success', function () {
+    return view('success');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('campaigns', [PublicController::class,'campaigns'])->name('campaings-listing');
+
+Route::post('donate', [DonationController::class,'donate'])->name('donate');
+
+Route::get('campaigns/{id}', [PublicController::class,'showCampaign'])->name('show-campaing');
 
 Route::prefix('admin')->group(function () {
     Route::resource('campaigns', CampaignController::class);
