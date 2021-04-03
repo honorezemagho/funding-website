@@ -16,8 +16,9 @@ class DonationController extends Controller
     {
         //
         $amount = $request['amount'];
+        $campaign_id = $request['campaign_id'];
         $contribution = new Donation();
-        $response = $contribution->donate($amount);
+        $response = $contribution->donate($campaign_id,$amount);
 
         $url = "";
 
@@ -36,5 +37,10 @@ class DonationController extends Controller
     public function create()
     {
         //
+    }
+
+    public function index(){
+        $donations = Donation::where('user_id', auth()->user()->id)->get();
+        return view('dashboard.donations.index', compact('donations'));
     }
 }
