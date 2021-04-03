@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+lore
 class CreateDonationsTable extends Migration
 {
     /**
@@ -16,7 +17,10 @@ class CreateDonationsTable extends Migration
         Schema::create('donations', function (Blueprint $table) {
             $table->id();
             $table->string('transaction_id');
-            $table->string('transaction_id');
+            $table->string('campaign_id');
+            $table->integer('user_id');
+            $table->integer('amount');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }
