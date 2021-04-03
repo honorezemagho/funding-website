@@ -29,10 +29,11 @@ Route::get('/dashboard', function () {
 Route::get('campaigns', [PublicController::class,'campaigns'])->name('campaings-listing');
 
 Route::post('donate', [DonationController::class,'donate'])->name('donate');
+Route::get('donations', [DonationController::class,'index'])->name('my-donations');
 
 Route::get('campaigns/{id}', [PublicController::class,'showCampaign'])->name('show-campaing');
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('campaigns', CampaignController::class);
 });
 
