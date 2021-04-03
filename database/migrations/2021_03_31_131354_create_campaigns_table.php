@@ -21,7 +21,8 @@ class CreateCampaignsTable extends Migration
             $table->integer('owner_id');
             // $table->integer('project_image')->nullable();
             $table->integer('days');
-            $table->string('percentage')->default(0.01);
+            $table->integer('is_open')->default(0);
+            $table->string('percentage')->default(0);
             $table->integer('completed')->default(0);
             $table->timestamps();
         });
