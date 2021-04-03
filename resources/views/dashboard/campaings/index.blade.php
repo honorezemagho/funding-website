@@ -26,6 +26,7 @@
                                 <th class="p-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Description</th>
                                 <th class="p-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Amount</th>
                                 <th class="p-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Owner</th>
+                                <th class="p-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Visibility</th>
                                 <th class="p-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Days</th>
                                 <th class="p-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Percentage</th>
                                 <th class="p-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Actions</th>
@@ -43,7 +44,7 @@
                                     </td>
                                     <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-200">
                                         <div class="flex items-center">
-                                                <div class="text-sm leading-5 font-medium text-gray-900">{!!$campaign->description!!}</div>
+                                                <div class="text-sm leading-5 font-medium text-gray-900">{!! Str::limit($campaign->description, 100)!!}</div>
                                         </div>
                                     </td>
                                     <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-200">
@@ -58,6 +59,11 @@
                                         </div>
                                     </td>
 
+                                    <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        <div class="flex items-center">
+                                                <div class="text-sm leading-5 font-medium text-gray-900">{{$campaign->is_open ? 'Public' : 'Private'}}</div>
+                                        </div>
+                                    </td>
 
                                     <td class="px-3 py-4 whitespace-no-wrap border-b border-gray-200">
                                         <div class="flex items-center">

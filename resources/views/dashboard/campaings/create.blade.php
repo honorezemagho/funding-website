@@ -65,6 +65,14 @@
                 <input type="number" name="days" id="project_days" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ old('days') }}">
               </div>
 
+              <div class="col-span-6 sm:col-span-3">
+                  <label for="is_open" class="block text-sm font-medium text-gray-700">Visibility</label>
+                  <select id="is_open" class="form-control" name="is_open"
+                  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                      <option value="1">Open</option>
+                      <option value="0">Private</option>
+                  </select>
+              </div>
 
             </div>
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
